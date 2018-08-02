@@ -1,20 +1,31 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { Observable } from 'rxjs/Observable';
-import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
+import { Observable } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+// import "rxjs/add/observable/throw";
 
-import { Pizza } from '../models/pizza.model';
+import { Pizza } from "../models/pizza.model";
 
 @Injectable()
 export class PizzasService {
   constructor(private http: HttpClient) {}
 
+  // getPizzas(): Observable<Pizza[]> {
+  //   return this.http
+  //     .get<Pizza[]>(`/api/pizzas`)
+  //     .pipe(catchError((error: any) => Observable.throw(error.json())));
+  // }
+
   getPizzas(): Observable<Pizza[]> {
     return this.http
-      .get<Pizza[]>(`/api/pizzas`)
-      .pipe(catchError((error: any) => Observable.throw(error.json())));
+      .get<any>(
+        "https://raw.githubusercontent.com/UltimateAngular/ngrx-store-effects-app/02-reducer-setup/db.json"
+      )
+      .pipe(
+        map(data => data.pizzas),
+        catchError((error: any) => Observable.throw(error.json()))
+      );
   }
 
   createPizza(payload: Pizza): Observable<Pizza> {

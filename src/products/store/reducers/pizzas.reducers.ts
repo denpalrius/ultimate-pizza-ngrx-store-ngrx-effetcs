@@ -51,7 +51,7 @@ const mockPizza = {
 };
 
 export const initialState: PizzaState = {
-  pizzas: [mockPizza],
+  pizzas: [],
   loaded: false,
   loading: false
 };
@@ -65,10 +65,12 @@ export function reducer(
       return { ...state, loading: true, loaded: false };
     }
     case fromState.LOAD_PIZZAS_FAIL: {
+      // TODO: handle error
       return { ...state, loading: false, loaded: false };
     }
     case fromState.LOAD_PIZZAS_SUCCESS: {
-      return { ...state, loading: false, loaded: true };
+      const data: Pizza[] = action.payload;
+      return { ...state, pizzas: data, loading: false, loaded: true };
     }
   }
   return state;
