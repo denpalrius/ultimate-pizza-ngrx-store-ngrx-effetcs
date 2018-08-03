@@ -8,7 +8,7 @@
     <div *ngIf="!(pizzas$ | async)?.length">
       No pizzas, add one to get started.
     </div>
-    <app-product-item *ngFor="let pizza of (pizzas$ | async)" [pizza]="pizza"></app-product-item>
+    <app-pizza-item *ngFor="let pizza of (pizzas$ | async)" [pizza]="pizza"></app-pizza-item>
 
     <!--
       <ag-grid-angular

@@ -20,7 +20,7 @@ export class PizzasService {
   getPizzas(): Observable<Pizza[]> {
     return this.http
       .get<any>(
-        "https://raw.githubusercontent.com/UltimateAngular/ngrx-store-effects-app/02-reducer-setup/db.json"
+        "https://raw.githubusercontent.com/UltimateAngular/ngrx-store-effects-app/02-reducer-setup/db.json2"
       )
       .pipe(
         map(data => data.pizzas),

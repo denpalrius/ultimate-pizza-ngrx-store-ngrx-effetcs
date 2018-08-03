@@ -1,8 +1,11 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
+
+// Material
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+// Store
 import { StoreModule, MetaReducer } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 
